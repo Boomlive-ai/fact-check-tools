@@ -6,6 +6,7 @@ COPY . /app
 
 # Install dependencies
 RUN pip install -r requirements.txt
+RUN pip install openai
 
 
 # Expose port 5000
