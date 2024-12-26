@@ -7,12 +7,15 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chains import create_retrieval_chain
+from dotenv import load_dotenv
+
 llm = ChatOpenAI(temperature=0, model_name='gpt-4o')
+load_dotenv()
 
 
 def FactCheck(query):
     payload = {
-    'key': 'AIzaSyC0hrRJViIjYxyzYpPi9hapUqciKkIkOqU',
+    'key':  os.getenv("GOOGLE_FACT_CHECK_TOOL_API"),
     'query':query
     }
     url ='https://factchecktools.googleapis.com/v1alpha1/claims:search'
