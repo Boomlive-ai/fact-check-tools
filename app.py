@@ -3,9 +3,12 @@ from tools import FactCheck, ProvideQuestionsForArticle, ProvideAnswerForArticle
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from flask_cors import CORS  # Import CORS
 
 app = Flask(__name__)
 os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
+
+CORS(app)  # Allow all origins
 
 # Define a root endpoint that provides documentation
 @app.route('/', methods=['GET'])
